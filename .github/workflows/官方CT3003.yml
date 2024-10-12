@@ -1,4 +1,4 @@
-name: 官方小米R3G
+name: 官方CT3003
 
 on:
   workflow_dispatch:
