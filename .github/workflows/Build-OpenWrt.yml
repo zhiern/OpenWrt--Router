@@ -31,7 +31,8 @@ jobs:
     steps:
     - name: Select Config Based on Device
       run: |
-        case ${{ github.event.inputs.device }} in
+        DEVICE="${{ github.event.inputs.device }}"
+        case "$DEVICE" in
           "Xiaomi R3G")
             CONFIG_FILE="Configs/Xiaomi-R3G"
             FIRMWARE_TAG="MSIP"
@@ -52,11 +53,14 @@ jobs:
             FIRMWARE_TAG="MT798X"
             CHIP="MT7981"
             ;;
+          *)
+            echo "Unknown device: $DEVICE"
+            exit 1
+            ;;
         esac
         echo "CONFIG_FILE=$CONFIG_FILE" >> $GITHUB_ENV
         echo "FIRMWARE_TAG=$FIRMWARE_TAG" >> $GITHUB_ENV
         echo "CHIP=$CHIP" >> $GITHUB_ENV
-
     - name: Check Server Performance
       run: |
         echo "警告⚠"
