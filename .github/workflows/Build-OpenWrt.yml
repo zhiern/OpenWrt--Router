@@ -37,7 +37,7 @@ jobs:
             CONFIG_FILE="Configs/Xiaomi-R3G"
             FIRMWARE_TAG="MSIP"
             CHIP="MT7621"
-            CLASH_KERNEL="mipsle"  # MT7621 是 MIPS 架构
+            CLASH_KERNEL="mips"  # MT7621 是 MIPS 架构
             CACHE_TOOLCHAIN="true"  # MIPS 架构不缓存工具链
             ;;
           "Xiaomi AX3000T")
@@ -51,7 +51,7 @@ jobs:
             CONFIG_FILE="Configs/Redmi-AX2100"
             FIRMWARE_TAG="MSIP"
             CHIP="MT7621"
-            CLASH_KERNEL="mipsle"
+            CLASH_KERNEL="mips"
             CACHE_TOOLCHAIN="true"
             ;;
           "Cetron CT3003")
@@ -92,6 +92,7 @@ jobs:
         echo "编译设备: ${{ github.event.inputs.device }}"
         echo "芯片组: $CHIP"
         echo "固件标签: $FIRMWARE_TAG"
+        echo "Clash 内核类型: $CLASH_KERNEL"  # 新增 Clash 内核类型输出
         echo "分配的服务器性能有限，若选择的插件过多，务必注意CPU性能！"
         echo -e "已知CPU型号(降序): 7763，8370C，8272CL，8171M，E5-2673\n"
         echo "--------------------------CPU信息--------------------------"
@@ -103,6 +104,7 @@ jobs:
         echo -e "$(sudo lshw -short -C memory | grep GiB)\n"
         echo "--------------------------硬盘信息--------------------------"
         echo "硬盘数量: $(ls /dev/sd* | grep -v [1-9] | wc -l)" && df -hT
+
 
     - name: Initialization Environment
       env:
