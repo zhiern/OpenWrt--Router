@@ -61,6 +61,7 @@ jobs:
         echo "CONFIG_FILE=$CONFIG_FILE" >> $GITHUB_ENV
         echo "FIRMWARE_TAG=$FIRMWARE_TAG" >> $GITHUB_ENV
         echo "CHIP=$CHIP" >> $GITHUB_ENV
+
     - name: Check Server Performance
       run: |
         echo "警告⚠"
