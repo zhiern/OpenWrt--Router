@@ -13,7 +13,9 @@ on:
           - Xiaomi R3G
           - Xiaomi AX3000T
           - Redmi AX2100
-          - CT3003
+          - Cetron CT3003
+          - Qigoo 360T7
+          
 env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: openwrt-23.05
@@ -48,8 +50,13 @@ jobs:
             FIRMWARE_TAG="MSIP"
             CHIP="MT7621"
             ;;
-          "CT3003")
-            CONFIG_FILE="Configs/CT3003"
+          "Cetron CT3003")
+            CONFIG_FILE="Configs/Cetron-CT3003"
+            FIRMWARE_TAG="MT798X"
+            CHIP="MT7981"
+            ;;
+          "Qigoo 360T7")
+            CONFIG_FILE="Configs/Qigoo-360T7"
             FIRMWARE_TAG="MT798X"
             CHIP="MT7981"
             ;;
