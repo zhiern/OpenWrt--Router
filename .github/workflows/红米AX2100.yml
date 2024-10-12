@@ -6,15 +6,15 @@ on:
 #    - cron: 0 18 * * *
 
 env:
-  REPO_URL: https://github.com/immortalwrt/immortalwrt
+  REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: openwrt-23.05
-  CONFIG_FILE: Configs/Redmi-AX2100.config
-  DIY_SCRIPT: diy.sh
+  CONFIG_FILE: Configs/Redmi-AX2100
+  DIY_SCRIPT: diy.office.sh
   CLASH_KERNEL: mips
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: mips
+  FIRMWARE_TAG: MISP
   TZ: Asia/Shanghai
 
 jobs:
