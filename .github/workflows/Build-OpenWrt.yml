@@ -15,7 +15,7 @@ on:
           - Redmi AX2100
           - Cetron CT3003
           - Qigoo 360T7
-          
+          - Redmi AX6000
 env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: openwrt-23.05
@@ -57,6 +57,11 @@ jobs:
             ;;
           "Qigoo 360T7")
             CONFIG_FILE="Configs/Qigoo-360T7"
+            FIRMWARE_TAG="MT798X"
+            CHIP="MT7981"
+            ;;
+          "Redmi AX6000")
+            CONFIG_FILE="Configs/Redmi-AX6000"
             FIRMWARE_TAG="MT798X"
             CHIP="MT7981"
             ;;
