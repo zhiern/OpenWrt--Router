@@ -1,4 +1,4 @@
-name: 红米AX2100
+name: 官方红米AX2100
 
 on:
   workflow_dispatch:
