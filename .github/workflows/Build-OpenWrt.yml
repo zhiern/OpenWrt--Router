@@ -11,7 +11,7 @@ on:
         type: choice
         options:
           - Xiaomi R3G
-          - Xiaomi AX300T
+          - Xiaomi AX3000T
           - Redmi AX2100
           - CT3003
 env:
