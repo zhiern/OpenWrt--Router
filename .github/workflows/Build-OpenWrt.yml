@@ -1,4 +1,4 @@
-name: 官方CT3003
+name: Build-OpenWrt
 
 on:
   workflow_dispatch:
