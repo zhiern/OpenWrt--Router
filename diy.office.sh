@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 个性化设置
-sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
 sed -i 's/OpenWrt/MI-R3G/' package/base-files/files/bin/config_generate
 
 # 调整菜单位置
