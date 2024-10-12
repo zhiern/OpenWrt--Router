@@ -1,4 +1,4 @@
-name: Rockchip_OpenWrt
+name: 小米R3G
 
 on:
   workflow_dispatch:
