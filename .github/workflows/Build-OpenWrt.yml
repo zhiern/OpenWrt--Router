@@ -33,17 +33,17 @@ jobs:
       run: |
         case ${{ github.event.inputs.device }} in
           "Xiaomi R3G")
-            CONFIG_FILE="Configs/R3G"
+            CONFIG_FILE="Configs/Xiaomi-R3G"
             FIRMWARE_TAG="MSIP"
             CHIP="MT7621"
             ;;
-          "Xiaomi AX300T")
-            CONFIG_FILE="Configs/AX300T"
+          "Xiaomi AX3000T")
+            CONFIG_FILE="Configs/Xiaomi-AX3000T"
             FIRMWARE_TAG="MT798X"
             CHIP="MT7981"
             ;;
           "Redmi AX2100")
-            CONFIG_FILE="Configs/AX2100"
+            CONFIG_FILE="Configs/Redmi-AX2100"
             FIRMWARE_TAG="MSIP"
             CHIP="MT7621"
             ;;
