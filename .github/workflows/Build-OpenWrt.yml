@@ -38,7 +38,7 @@ jobs:
             FIRMWARE_TAG="MSIP"
             CHIP="MT7621"
             CLASH_KERNEL="mips"  # MT7621 是 MIPS 架构
-            CACHE_TOOLCHAIN="true"  # MIPS 架构不缓存工具链
+            CACHE_TOOLCHAIN="true"  # MIPS 架构缓存工具链
             ;;
           "Xiaomi AX3000T")
             CONFIG_FILE="Configs/Xiaomi-AX3000T"
