@@ -1,4 +1,4 @@
-name: 小米R3G
+name: 官方小米R3G
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ env:
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: mips
+  FIRMWARE_TAG: MISP
   TZ: Asia/Shanghai
 
 jobs:
