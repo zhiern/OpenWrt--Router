@@ -35,7 +35,7 @@ jobs:
         case "$DEVICE" in
           "Xiaomi R3G")
             CONFIG_FILE="Configs/Xiaomi-R3G"
-            FIRMWARE_TAG="MSIP"
+            FIRMWARE_TAG="MT7621"
             CHIP="MT7621"
             CLASH_KERNEL="mips"  # MT7621 是 MIPS 架构
             CACHE_TOOLCHAIN="true"  # MIPS 架构缓存工具链
@@ -49,7 +49,7 @@ jobs:
             ;;
           "Redmi AX2100")
             CONFIG_FILE="Configs/Redmi-AX2100"
-            FIRMWARE_TAG="MSIP"
+            FIRMWARE_TAG="MT7621"
             CHIP="MT7621"
             CLASH_KERNEL="mips"
             CACHE_TOOLCHAIN="true"
