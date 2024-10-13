@@ -38,7 +38,7 @@ jobs:
             CONFIG_FILE="Configs/Xiaomi-R3G"
             FIRMWARE_TAG="MT7621"
             CHIP="MT7621"
-            DIY_SCRIPT: Diy/diy.Xiaomi-R3G.sh
+            DIY_SCRIPT="Diy/diy.Xiaomi-R3G.sh"
             CLASH_KERNEL="mips"  # MT7621 是 MIPS 架构
             CACHE_TOOLCHAIN="true"  # MIPS 架构缓存工具链
             ;;
@@ -46,7 +46,7 @@ jobs:
             CONFIG_FILE="Configs/Xiaomi-AX3000T"
             FIRMWARE_TAG="MT798X"
             CHIP="MT7981"
-            DIY_SCRIPT: Diy/Xiaomi-AX3000T.sh
+            DIY_SCRIPT="Diy/Xiaomi-AX3000T.sh"
             CLASH_KERNEL="arm"  # MT7981 是 ARM 架构
             CACHE_TOOLCHAIN="true"  # ARM 架构缓存工具链
             ;;
@@ -54,7 +54,7 @@ jobs:
             CONFIG_FILE="Configs/Redmi-AC2100"
             FIRMWARE_TAG="MT7621"
             CHIP="MT7621"
-            DIY_SCRIPT: Diy/Redmi-AC2100.sh
+            DIY_SCRIPT="Diy/Redmi-AC2100.sh"
             CLASH_KERNEL="mips"
             CACHE_TOOLCHAIN="true"
             ;;
@@ -62,7 +62,7 @@ jobs:
             CONFIG_FILE="Configs/Cetron-CT3003"
             FIRMWARE_TAG="MT798X"
             CHIP="MT7981"
-            DIY_SCRIPT: Diy/Cetron-CT3003.sh
+            DIY_SCRIPT="Diy/Cetron-CT3003.sh"
             CLASH_KERNEL="arm"
             CACHE_TOOLCHAIN="true"
             ;;
@@ -70,7 +70,7 @@ jobs:
             CONFIG_FILE="Configs/Qigoo-360T7"
             FIRMWARE_TAG="MT798X"
             CHIP="MT7981"
-            DIY_SCRIPT: Diy/Qigoo-360T7.sh
+            DIY_SCRIPT="Diy/Qigoo-360T7.sh"
             CLASH_KERNEL="arm"
             CACHE_TOOLCHAIN="true"
             ;;
@@ -78,7 +78,7 @@ jobs:
             CONFIG_FILE="Configs/Redmi-AX6000"
             FIRMWARE_TAG="MT798X"
             CHIP="MT7981"
-            DIY_SCRIPT: Diy/Redmi-AX6000.sh
+            DIY_SCRIPT="Diy/Redmi-AX6000.sh"
             CLASH_KERNEL="arm"
             CACHE_TOOLCHAIN="true"
             ;;
@@ -86,7 +86,7 @@ jobs:
             CONFIG_FILE="Configs/Xiaomi-AX3600"
             FIRMWARE_TAG="IPQ807x"
             CHIP="IPQ807x"
-            DIY_SCRIPT: Diy/Xiaomi-AX3600.sh
+            DIY_SCRIPT="Diy/Xiaomi-AX3600.sh"
             CLASH_KERNEL="arm"
             CACHE_TOOLCHAIN="true"
             ;;
@@ -108,7 +108,7 @@ jobs:
         echo "编译设备: ${{ github.event.inputs.device }}"
         echo "芯片组: $CHIP"
         echo "固件标签: $FIRMWARE_TAG"
-        echo "脚本选择: $DIY_SCRIPT
+        echo "脚本选择: $DIY_SCRIPT"  # 添加引号
         echo "Clash 内核类型: $CLASH_KERNEL"  # 新增 Clash 内核类型输出
         echo "分配的服务器性能有限，若选择的插件过多，务必注意CPU性能！"
         echo -e "已知CPU型号(降序): 7763，8370C，8272CL，8171M，E5-2673\n"
@@ -121,7 +121,6 @@ jobs:
         echo -e "$(sudo lshw -short -C memory | grep GiB)\n"
         echo "--------------------------硬盘信息--------------------------"
         echo "硬盘数量: $(ls /dev/sd* | grep -v [1-9] | wc -l)" && df -hT
-
 
     - name: Initialization Environment
       env:
