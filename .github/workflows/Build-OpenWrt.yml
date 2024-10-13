@@ -21,7 +21,6 @@ on:
 env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: openwrt-23.05
-  DIY_SCRIPT: diy.office.sh
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
   TZ: Asia/Shanghai
@@ -39,6 +38,7 @@ jobs:
             CONFIG_FILE="Configs/Xiaomi-R3G"
             FIRMWARE_TAG="MT7621"
             CHIP="MT7621"
+            DIY_SCRIPT: Diy/diy.Xiaomi-R3G
             CLASH_KERNEL="mips"  # MT7621 是 MIPS 架构
             CACHE_TOOLCHAIN="true"  # MIPS 架构缓存工具链
             ;;
@@ -46,6 +46,7 @@ jobs:
             CONFIG_FILE="Configs/Xiaomi-AX3000T"
             FIRMWARE_TAG="MT798X"
             CHIP="MT7981"
+            DIY_SCRIPT: Diy/Xiaomi-AX3000T
             CLASH_KERNEL="arm"  # MT7981 是 ARM 架构
             CACHE_TOOLCHAIN="true"  # ARM 架构缓存工具链
             ;;
@@ -53,6 +54,7 @@ jobs:
             CONFIG_FILE="Configs/Redmi-AX2100"
             FIRMWARE_TAG="MT7621"
             CHIP="MT7621"
+            DIY_SCRIPT: Diy/Redmi-AX2100
             CLASH_KERNEL="mips"
             CACHE_TOOLCHAIN="true"
             ;;
@@ -60,6 +62,7 @@ jobs:
             CONFIG_FILE="Configs/Cetron-CT3003"
             FIRMWARE_TAG="MT798X"
             CHIP="MT7981"
+            DIY_SCRIPT: Diy/Cetron-CT3003
             CLASH_KERNEL="arm"
             CACHE_TOOLCHAIN="true"
             ;;
@@ -67,6 +70,7 @@ jobs:
             CONFIG_FILE="Configs/Qigoo-360T7"
             FIRMWARE_TAG="MT798X"
             CHIP="MT7981"
+            DIY_SCRIPT: Diy/Qigoo-360T7
             CLASH_KERNEL="arm"
             CACHE_TOOLCHAIN="true"
             ;;
@@ -74,6 +78,7 @@ jobs:
             CONFIG_FILE="Configs/Redmi-AX6000"
             FIRMWARE_TAG="MT798X"
             CHIP="MT7981"
+            DIY_SCRIPT: Diy/Redmi-AX6000
             CLASH_KERNEL="arm"
             CACHE_TOOLCHAIN="true"
             ;;
@@ -81,6 +86,7 @@ jobs:
             CONFIG_FILE="Configs/Xiaomi-AX3600"
             FIRMWARE_TAG="IPQ807x"
             CHIP="IPQ807x"
+            DIY_SCRIPT: Diy/Xiaomi-AX3600
             CLASH_KERNEL="arm"
             CACHE_TOOLCHAIN="true"
             ;;
@@ -94,6 +100,7 @@ jobs:
         echo "CHIP=$CHIP" >> $GITHUB_ENV
         echo "CLASH_KERNEL=$CLASH_KERNEL" >> $GITHUB_ENV
         echo "CACHE_TOOLCHAIN=$CACHE_TOOLCHAIN" >> $GITHUB_ENV
+        echo "DIY_SCRIPT=$DIY_SCRIPT" >> $GITHUB_ENV
         
     - name: Check Server Performance
       run: |
@@ -101,6 +108,7 @@ jobs:
         echo "编译设备: ${{ github.event.inputs.device }}"
         echo "芯片组: $CHIP"
         echo "固件标签: $FIRMWARE_TAG"
+        echo "脚本选择: $DIY_SCRIPT
         echo "Clash 内核类型: $CLASH_KERNEL"  # 新增 Clash 内核类型输出
         echo "分配的服务器性能有限，若选择的插件过多，务必注意CPU性能！"
         echo -e "已知CPU型号(降序): 7763，8370C，8272CL，8171M，E5-2673\n"
