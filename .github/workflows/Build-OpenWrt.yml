@@ -38,7 +38,7 @@ jobs:
             CONFIG_FILE="Configs/Xiaomi-R3G"
             FIRMWARE_TAG="MT7621"
             CHIP="MT7621"
-            DIY_SCRIPT: Diy/diy.Xiaomi-R3G.sh
+            DIY_SCRIPT="Diy/diy.Xiaomi-R3G.sh"
             CLASH_KERNEL="mips"  # MT7621 是 MIPS 架构
             CACHE_TOOLCHAIN="true"  # MIPS 架构缓存工具链
             ;;
@@ -46,7 +46,7 @@ jobs:
             CONFIG_FILE="Configs/Xiaomi-AX3000T"
             FIRMWARE_TAG="MT798X"
             CHIP="MT7981"
-            DIY_SCRIPT: Diy/Xiaomi-AX3000T.sh
+            DIY_SCRIPT="Diy/Xiaomi-AX3000T.sh"
             CLASH_KERNEL="arm"  # MT7981 是 ARM 架构
             CACHE_TOOLCHAIN="true"  # ARM 架构缓存工具链
             ;;
@@ -54,7 +54,7 @@ jobs:
             CONFIG_FILE="Configs/Redmi-AC2100"
             FIRMWARE_TAG="MT7621"
             CHIP="MT7621"
-            DIY_SCRIPT: Diy/Redmi-AC2100.sh
+            DIY_SCRIPT="Diy/Redmi-AC2100.sh"
             CLASH_KERNEL="mips"
             CACHE_TOOLCHAIN="true"
             ;;
@@ -62,7 +62,7 @@ jobs:
             CONFIG_FILE="Configs/Cetron-CT3003"
             FIRMWARE_TAG="MT798X"
             CHIP="MT7981"
-            DIY_SCRIPT: Diy/Cetron-CT3003.sh
+            DIY_SCRIPT="Diy/Cetron-CT3003.sh"
             CLASH_KERNEL="arm"
             CACHE_TOOLCHAIN="true"
             ;;
@@ -70,7 +70,7 @@ jobs:
             CONFIG_FILE="Configs/Qigoo-360T7"
             FIRMWARE_TAG="MT798X"
             CHIP="MT7981"
-            DIY_SCRIPT: Diy/Qigoo-360T7.sh
+            DIY_SCRIPT="Diy/Qigoo-360T7.sh"
             CLASH_KERNEL="arm"
             CACHE_TOOLCHAIN="true"
             ;;
@@ -78,7 +78,7 @@ jobs:
             CONFIG_FILE="Configs/Redmi-AX6000"
             FIRMWARE_TAG="MT798X"
             CHIP="MT7981"
-            DIY_SCRIPT: Diy/Redmi-AX6000.sh
+            DIY_SCRIPT="Diy/Redmi-AX6000.sh"
             CLASH_KERNEL="arm"
             CACHE_TOOLCHAIN="true"
             ;;
@@ -86,7 +86,7 @@ jobs:
             CONFIG_FILE="Configs/Xiaomi-AX3600"
             FIRMWARE_TAG="IPQ807x"
             CHIP="IPQ807x"
-            DIY_SCRIPT: Diy/Xiaomi-AX3600.sh
+            DIY_SCRIPT="Diy/Xiaomi-AX3600.sh"
             CLASH_KERNEL="arm"
             CACHE_TOOLCHAIN="true"
             ;;
