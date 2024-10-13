@@ -39,7 +39,6 @@ jobs:
             FIRMWARE_TAG="MT7621"
             CHIP="MT7621"
             DIY_SCRIPT="Diy/Xiaomi-R3G.sh"
-            CLASH_KERNEL="mips"  # MT7621 是 MIPS 架构
             CACHE_TOOLCHAIN="true"  # MIPS 架构缓存工具链
             ;;
           "Xiaomi AX3000T")
@@ -47,7 +46,6 @@ jobs:
             FIRMWARE_TAG="MT798X"
             CHIP="MT7981"
             DIY_SCRIPT="Diy/Xiaomi-AX3000T.sh"
-            CLASH_KERNEL="arm"  # MT7981 是 ARM 架构
             CACHE_TOOLCHAIN="true"  # ARM 架构缓存工具链
             ;;
           "Redmi AC2100")
@@ -55,7 +53,6 @@ jobs:
             FIRMWARE_TAG="MT7621"
             CHIP="MT7621"
             DIY_SCRIPT="Diy/Redmi-AC2100.sh"
-            CLASH_KERNEL="mips"
             CACHE_TOOLCHAIN="true"
             ;;
           "Cetron CT3003")
@@ -63,7 +60,6 @@ jobs:
             FIRMWARE_TAG="MT798X"
             CHIP="MT7981"
             DIY_SCRIPT="Diy/Cetron-CT3003.sh"
-            CLASH_KERNEL="arm"
             CACHE_TOOLCHAIN="true"
             ;;
           "Qigoo 360T7")
@@ -71,7 +67,6 @@ jobs:
             FIRMWARE_TAG="MT798X"
             CHIP="MT7981"
             DIY_SCRIPT="Diy/Qigoo-360T7.sh"
-            CLASH_KERNEL="arm"
             CACHE_TOOLCHAIN="true"
             ;;
           "Redmi AX6000")
@@ -79,7 +74,6 @@ jobs:
             FIRMWARE_TAG="MT798X"
             CHIP="MT7981"
             DIY_SCRIPT="Diy/Redmi-AX6000.sh"
-            CLASH_KERNEL="arm"
             CACHE_TOOLCHAIN="true"
             ;;
             "Xiaomi AX3600")
@@ -87,7 +81,6 @@ jobs:
             FIRMWARE_TAG="IPQ807x"
             CHIP="IPQ807x"
             DIY_SCRIPT="Diy/Xiaomi-AX3600.sh"
-            CLASH_KERNEL="arm"
             CACHE_TOOLCHAIN="true"
             ;;
           *)
@@ -98,7 +91,6 @@ jobs:
         echo "CONFIG_FILE=$CONFIG_FILE" >> $GITHUB_ENV
         echo "FIRMWARE_TAG=$FIRMWARE_TAG" >> $GITHUB_ENV
         echo "CHIP=$CHIP" >> $GITHUB_ENV
-        echo "CLASH_KERNEL=$CLASH_KERNEL" >> $GITHUB_ENV
         echo "CACHE_TOOLCHAIN=$CACHE_TOOLCHAIN" >> $GITHUB_ENV
         echo "DIY_SCRIPT=$DIY_SCRIPT" >> $GITHUB_ENV
         
@@ -109,7 +101,6 @@ jobs:
         echo "芯片组: $CHIP"
         echo "固件标签: $FIRMWARE_TAG"
         echo "脚本选择: $DIY_SCRIPT"  # 添加引号
-        echo "Clash 内核类型: $CLASH_KERNEL"  # 新增 Clash 内核类型输出
         echo "分配的服务器性能有限，若选择的插件过多，务必注意CPU性能！"
         echo -e "已知CPU型号(降序): 7763，8370C，8272CL，8171M，E5-2673\n"
         echo "--------------------------CPU信息--------------------------"
