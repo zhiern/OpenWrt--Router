@@ -28,7 +28,7 @@ git clone --depth=1 https://github.com/oppen321/luci-app-eqos package/eqos
 
 # 个性化设置
 sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
-sed -i 's/OpenWrt/Redmi-AC2100/' package/base-files/files/bin/config_generate
+sed -i 's/OpenWrt/Redmi AC2100/' package/base-files/files/bin/config_generate
 
 # 调整菜单位置
 sed -i "s|services|system|g" feeds/luci/applications/luci-app-ttyd/root/usr/share/luci/menu.d/luci-app-ttyd.json
