@@ -36,7 +36,7 @@ cp -f $GITHUB_WORKSPACE/images/bg1.jpg package/luci-theme-argon/htdocs/luci-stat
 sed -i "s/set wireless.default_${name}.ssid=OpenWrt/set wireless.default_${name}.ssid=MiFiR3G/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 # 开启Wifi
-sed -i "s/set wireless.${name}.disabled=1/set wireless.${name}.disabled=0/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/set wireless.radio0.disabled=1/set wireless.radio0.disabled=0/' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 # 调整菜单位置
 sed -i "s|services|system|g" feeds/luci/applications/luci-app-ttyd/root/usr/share/luci/menu.d/luci-app-ttyd.json
