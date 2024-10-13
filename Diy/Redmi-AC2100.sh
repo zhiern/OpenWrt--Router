@@ -38,6 +38,11 @@ sed -i 's/set wireless.default_${name}.ssid=OpenWrt/set wireless.default_${name}
 # 开启Wifi
 sed -i 's/set wireless.${name}.disabled=1/set wireless.${name}.disabled=0/' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
+sed -i '/set wireless.default_${name}.ssid=RedmiAC2100/c\
+set wireless.default_${name}.ssid=RedmiAC2100_${mode_band}  # 使用不同的SSID\
+set wireless.default_${name}.encryption=psk2  # 设置加密\
+set wireless.default_${name}.key=123456  # WiFi密码' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
 # 调整菜单位置
 sed -i "s|services|system|g" feeds/luci/applications/luci-app-ttyd/root/usr/share/luci/menu.d/luci-app-ttyd.json
 
