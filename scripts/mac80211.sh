@@ -216,6 +216,3 @@ EOF
 		uci -q commit wireless
 	done
 }
-
-# 调用检测函数
-detect_mac80211
