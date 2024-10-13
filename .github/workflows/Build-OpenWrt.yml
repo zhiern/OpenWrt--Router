@@ -38,7 +38,7 @@ jobs:
             CONFIG_FILE="Configs/Xiaomi-R3G"
             FIRMWARE_TAG="MT7621"
             CHIP="MT7621"
-            DIY_SCRIPT="Diy/diy.Xiaomi-R3G.sh"
+            DIY_SCRIPT="Diy/Xiaomi-R3G.sh"
             CLASH_KERNEL="mips"  # MT7621 是 MIPS 架构
             CACHE_TOOLCHAIN="true"  # MIPS 架构缓存工具链
             ;;
