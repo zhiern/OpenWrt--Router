@@ -12,7 +12,7 @@ on:
         options:
           - Xiaomi R3G
           - Xiaomi AX3000T
-          - Redmi AX2100
+          - Redmi AC2100
           - Cetron CT3003
           - Qigoo 360T7
           - Redmi AX6000
@@ -50,11 +50,11 @@ jobs:
             CLASH_KERNEL="arm"  # MT7981 是 ARM 架构
             CACHE_TOOLCHAIN="true"  # ARM 架构缓存工具链
             ;;
-          "Redmi AX2100")
-            CONFIG_FILE="Configs/Redmi-AX2100"
+          "Redmi AC2100")
+            CONFIG_FILE="Configs/Redmi-AC2100"
             FIRMWARE_TAG="MT7621"
             CHIP="MT7621"
-            DIY_SCRIPT: Diy/Redmi-AX2100
+            DIY_SCRIPT: Diy/Redmi-AC2100
             CLASH_KERNEL="mips"
             CACHE_TOOLCHAIN="true"
             ;;
