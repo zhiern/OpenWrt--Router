@@ -209,9 +209,9 @@ detect_mac80211() {
 			set wireless.default_${name}.device=${name}
 			set wireless.default_${name}.network=lan
 			set wireless.default_${name}.mode=ap
-			set wireless.default_${name}.ssid=MiFiR3G_${mode_band}  # 使用不同的SSID
+			set wireless.default_${name}.ssid=OpenWrt_${mode_band}  # 使用不同的SSID
 			set wireless.default_${name}.encryption=psk2  # 设置加密
-			set wireless.default_${name}.key=112233445566  # WiFi密码
+			set wireless.default_${name}.key=123456  # WiFi密码
 EOF
 		uci -q commit wireless
 	done
