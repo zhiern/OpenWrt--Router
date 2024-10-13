@@ -153,6 +153,10 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
+        # 检查 DIY 目录和文件
+        ls -l $GITHUB_WORKSPACE/Diy  # 确保 Diy 目录及其内容存在
+        # 修改 Diy 脚本的权限
+        chmod +x $GITHUB_WORKSPACE/Diy/*.sh
         COMMIT_AUTHOR=$(git show -s --date=short --format="作者: %an")
         echo "COMMIT_AUTHOR=$COMMIT_AUTHOR" >> $GITHUB_ENV
         COMMIT_DATE=$(git show -s --date=short --format="时间: %ci")
