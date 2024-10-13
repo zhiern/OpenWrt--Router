@@ -10,7 +10,7 @@ function git_sparse_clone() {
   cd .. && rm -rf $repodir
 }
 
-更换golang版本
+# 更换golang版本
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 
