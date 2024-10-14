@@ -34,13 +34,13 @@ cp -f $GITHUB_WORKSPACE/images/bg1.jpg package/luci-theme-argon/htdocs/luci-stat
 
 
 # 修改WiFi名称
-sed -i 's/set wireless.default_${name}.ssid=OpenWrt/set wireless.default_${name}.ssid=RedmiAC2100/' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/set wireless.default_${name}.ssid=OpenWrt/set wireless.default_${name}.ssid=OpenWrt_${mode_band}/' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 # 开启WiFi
 sed -i 's/set wireless.${name}.disabled=1/set wireless.${name}.disabled=0/' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 # WiFi设置
-cp -f $GITHUB_WORKSPACE/scripts/mac80211.sh package/kernel/mac80211/files/lib/wifi/mac80211.sh
+# cp -f $GITHUB_WORKSPACE/scripts/mac80211.sh package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 # 调整菜单位置
 sed -i "s|services|system|g" feeds/luci/applications/luci-app-ttyd/root/usr/share/luci/menu.d/luci-app-ttyd.json
