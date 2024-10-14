@@ -5,12 +5,7 @@
 ##添加自己的插件库
 echo -e "\nsrc-git extraipk https://github.com/xiangfeidexiaohuo/extra-ipk" >> feeds.conf.default
 
-#!/bin/bash
-#=================================================
-# DaoDao's script
-#=================================================             
-
-
+      
 ##
 echo -e "\nmsgid \"Control\"" >> feeds/luci/modules/luci-base/po/zh_Hans/base.po
 echo -e "msgstr \"控制\"" >> feeds/luci/modules/luci-base/po/zh_Hans/base.po
@@ -112,3 +107,6 @@ sed -i 's/services/vpn/g' package/feeds/luci/luci-app-openclash/luasrc/view/open
 sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-bypass/luasrc/controller/*.lua
 sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-bypass/luasrc/model/cbi/bypass/*.lua
 sed -i 's/services/vpn/g' package/feeds/extraipk/luci-app-bypass/luasrc/view/bypass/*.htm
+
+./scripts/feeds update -a
+./scripts/feeds install -a
