@@ -10,9 +10,7 @@ on:
         required: true
         type: choice
         options:
-          - Xiaomi R3G
           - Xiaomi AX3000T
-          - Redmi AC2100
           - Cetron CT3003
           - Qigoo 360T7
           - Redmi AX6000
@@ -34,26 +32,12 @@ jobs:
       run: |
         DEVICE="${{ github.event.inputs.device }}"
         case "$DEVICE" in
-          "Xiaomi R3G")
-            CONFIG_FILE="Configs/Xiaomi-R3G"
-            FIRMWARE_TAG="MT7621"
-            CHIP="MT7621"
-            DIY_SCRIPT="Diy/Xiaomi-R3G.sh"
-            CACHE_TOOLCHAIN="true"  # MIPS 架构缓存工具链
-            ;;
           "Xiaomi AX3000T")
             CONFIG_FILE="Configs/Xiaomi-AX3000T"
             FIRMWARE_TAG="MT798X"
             CHIP="MT7981"
             DIY_SCRIPT="Diy/Xiaomi-AX3000T.sh"
             CACHE_TOOLCHAIN="true"  # ARM 架构缓存工具链
-            ;;
-          "Redmi AC2100")
-            CONFIG_FILE="Configs/Redmi-AC2100"
-            FIRMWARE_TAG="MT7621"
-            CHIP="MT7621"
-            DIY_SCRIPT="Diy/Redmi-AC2100.sh"
-            CACHE_TOOLCHAIN="true"
             ;;
           "Cetron CT3003")
             CONFIG_FILE="Configs/Cetron-CT3003"
@@ -77,6 +61,13 @@ jobs:
             CACHE_TOOLCHAIN="true"
             ;;
             "Xiaomi AX3600")
+            CONFIG_FILE="Configs/Xiaomi-AX3600"
+            FIRMWARE_TAG="IPQ807x"
+            CHIP="IPQ807x"
+            DIY_SCRIPT="Diy/Xiaomi-AX3600.sh"
+            CACHE_TOOLCHAIN="true"
+            ;;
+            "F-mt7981_ax3000t")
             CONFIG_FILE="Configs/Xiaomi-AX3600"
             FIRMWARE_TAG="IPQ807x"
             CHIP="IPQ807x"
