@@ -157,6 +157,12 @@ jobs:
         mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}
         prefix: ${{ env.OPENWRT_PATH }}
 
+    - name: 执行自定义 feed.sh 脚本
+      run: |
+        cd $GITHUB_WORKSPACE/scripts
+        chmod +x feed.sh
+        ./feed.sh      
+
     - name: 安装源
       run: |
         cd $OPENWRT_PATH
