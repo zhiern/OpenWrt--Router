@@ -3,21 +3,6 @@
 # ZeroIPK's script 
 #=================================================
 
-
-# Git稀疏克隆，只克隆指定目录到本地
-function git_sparse_clone() {
-  branch="$1" repourl="$2" && shift 2
-  git clone --depth=1 -b $branch --single-branch --filter=blob:none --sparse $repourl
-  repodir=$(echo $repourl | awk -F '/' '{print $(NF)}')
-  cd $repodir && git sparse-checkout set $@
-  mv -f $@ ../package
-  cd .. && rm -rf $repodir
-}
-
-
-# Zero 插件
-git clone --depth=1 https://github.com/oppen321/Zero-ipk package/Zero-ipk
-
       
 ##
 echo -e "\nmsgid \"Control\"" >> feeds/luci/modules/luci-base/po/zh_Hans/base.po
@@ -31,13 +16,21 @@ echo -e "msgstr \"网络存储\"" >> feeds/luci/modules/luci-base/po/zh_Hans/bas
 sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
 
 ##
-rm -rf ./package/Zero-ipk/theme/luci-theme-argon-18.06
-rm -rf ./package/Zero-ipk/theme/luci-app-argon-config-18.06
-rm -rf ./package/Zero-ipk/theme/luci-theme-design
-rm -rf ./package/Zero-ipk/theme/luci-theme-edge
-rm -rf ./package/Zero-ipk/theme/luci-theme-ifit
-rm -rf ./package/Zero-ipk/theme/luci-theme-opentopd
-rm -rf ./package/Zero-ipk/theme/luci-theme-neobird
+rm -rf ./feeds/extraipk/theme/luci-theme-argon-18.06
+rm -rf ./feeds/extraipk/theme/luci-app-argon-config-18.06
+rm -rf ./feeds/extraipk/theme/luci-theme-design
+rm -rf ./feeds/extraipk/theme/luci-theme-edge
+rm -rf ./feeds/extraipk/theme/luci-theme-ifit
+rm -rf ./feeds/extraipk/theme/luci-theme-opentopd
+rm -rf ./feeds/extraipk/theme/luci-theme-neobird
+
+rm -rf ./package/feeds/extraipk/luci-theme-argon-18.06
+rm -rf ./package/feeds/extraipk/luci-app-argon-config-18.06
+rm -rf ./package/feeds/extraipk/theme/luci-theme-design
+rm -rf ./package/feeds/extraipk/theme/luci-theme-edge
+rm -rf ./package/feeds/extraipk/theme/luci-theme-ifit
+rm -rf ./package/feeds/extraipk/theme/luci-theme-opentopd
+rm -rf ./package/feeds/extraipk/theme/luci-theme-neobird
 
 
 ##取消bootstrap为默认主题
