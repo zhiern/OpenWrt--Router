@@ -16,21 +16,21 @@ echo -e "msgstr \"网络存储\"" >> feeds/luci/modules/luci-base/po/zh_Hans/bas
 sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
 
 ##
-rm -rf ./feeds/Zero-IPK/theme/luci-theme-argon-18.06
-rm -rf ./feeds/Zero-IPK/theme/luci-app-argon-config-18.06
-rm -rf ./feeds/Zero-IPK/theme/luci-theme-design
-rm -rf ./feeds/Zero-IPK/theme/luci-theme-edge
-rm -rf ./feeds/Zero-IPK/theme/luci-theme-ifit
-rm -rf ./feeds/Zero-IPK/theme/luci-theme-opentopd
-rm -rf ./feeds/Zero-IPK/theme/luci-theme-neobird
+rm -rf ./feeds/Zero/theme/luci-theme-argon-18.06
+rm -rf ./feeds/Zero/theme/luci-app-argon-config-18.06
+rm -rf ./feeds/Zero/theme/luci-theme-design
+rm -rf ./feeds/Zero/theme/luci-theme-edge
+rm -rf ./feeds/Zero/theme/luci-theme-ifit
+rm -rf ./feeds/ZeroK/theme/luci-theme-opentopd
+rm -rf ./feeds/Zero/theme/luci-theme-neobird
 
-rm -rf ./package/feeds/Zero-IPK/luci-theme-argon-18.06
-rm -rf ./package/feeds/Zero-IPK/luci-app-argon-config-18.06
-rm -rf ./package/feeds/Zero-IPK/theme/luci-theme-design
-rm -rf ./package/feeds/Zero-IPK/theme/luci-theme-edge
-rm -rf ./package/feeds/Zero-IPK/theme/luci-theme-ifit
-rm -rf ./package/feeds/Zero-IPK/theme/luci-theme-opentopd
-rm -rf ./package/feeds/Zero-IPK/theme/luci-theme-neobird
+rm -rf ./package/feeds/Zero/luci-theme-argon-18.06
+rm -rf ./package/feeds/Zero/luci-app-argon-config-18.06
+rm -rf ./package/feeds/Zero/theme/luci-theme-design
+rm -rf ./package/feeds/Zero/theme/luci-theme-edge
+rm -rf ./package/feeds/Zero/theme/luci-theme-ifit
+rm -rf ./package/feeds/Zero/theme/luci-theme-opentopd
+rm -rf ./package/feeds/Zero/theme/luci-theme-neobird
 
 
 ##取消bootstrap为默认主题
@@ -44,7 +44,7 @@ sed -i "s/hostname='.*'/hostname='ZeroWrt'/g" package/base-files/files/bin/confi
 ##加入作者信息
 sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='ZeroWrt-$(date +%Y%m%d)'/g"  package/base-files/files/etc/openwrt_release
 sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By ZeroWrt'/g" package/base-files/files/etc/openwrt_release
-cp -af feeds/Zero-IPK/patch/diy/banner-easy  package/base-files/files/etc/banner
+cp -af feeds/Zero/patch/diy/banner-easy  package/base-files/files/etc/banner
 
 sed -i "2iuci set istore.istore.channel='ZeroWrt'" package/emortal/default-settings/files/99-default-settings
 sed -i "3iuci commit istore" package/emortal/default-settings/files/99-default-settings
@@ -80,18 +80,18 @@ sed -i 's/services/vpn/g' package/feeds/luci/luci-app-passwall/luasrc/view/passw
 sed -i 's/services/vpn/g' package/feeds/luci/luci-app-passwall/luasrc/view/passwall/rule/*.htm
 sed -i 's/services/vpn/g' package/feeds/luci/luci-app-passwall/luasrc/view/passwall/server/*.htm
 
-sed -i 's/services/vpn/g' package/feeds/Zero-IPK/luci-app-passwall2/luasrc/controller/*.lua
-sed -i 's/services/vpn/g' package/feeds/Zero-IPK/luci-app-passwall2/luasrc/passwall2/*.lua
-sed -i 's/services/vpn/g' package/feeds/Zero-IPK/luci-app-passwall2/luasrc/model/cbi/passwall2/client/*.lua
-sed -i 's/services/vpn/g' package/feeds/Zero-IPK/luci-app-passwall2/luasrc/model/cbi/passwall2/server/*.lua
-sed -i 's/services/vpn/g' package/feeds/Zero-IPK/luci-app-passwall2/luasrc/view/passwall2/app_update/*.htm
-sed -i 's/services/vpn/g' package/feeds/Zero-IPK/luci-app-passwall2/luasrc/view/passwall2/socks_auto_switch/*.htm
-sed -i 's/services/vpn/g' package/feeds/Zero-IPK/luci-app-passwall2/luasrc/view/passwall2/global/*.htm
-sed -i 's/services/vpn/g' package/feeds/Zero-IPK/luci-app-passwall2/luasrc/view/passwall2/haproxy/*.htm
-sed -i 's/services/vpn/g' package/feeds/Zero-IPK/luci-app-passwall2/luasrc/view/passwall2/log/*.htm
-sed -i 's/services/vpn/g' package/feeds/Zero-IPK/luci-app-passwall2/luasrc/view/passwall2/node_list/*.htm
-sed -i 's/services/vpn/g' package/feeds/Zero-IPK/luci-app-passwall2/luasrc/view/passwall2/rule/*.htm
-sed -i 's/services/vpn/g' package/feeds/Zero-IPK/luci-app-passwall2/luasrc/view/passwall2/server/*.htm
+sed -i 's/services/vpn/g' package/feeds/Zero/luci-app-passwall2/luasrc/controller/*.lua
+sed -i 's/services/vpn/g' package/feeds/Zero/luci-app-passwall2/luasrc/passwall2/*.lua
+sed -i 's/services/vpn/g' package/feeds/Zero/luci-app-passwall2/luasrc/model/cbi/passwall2/client/*.lua
+sed -i 's/services/vpn/g' package/feeds/Zero/luci-app-passwall2/luasrc/model/cbi/passwall2/server/*.lua
+sed -i 's/services/vpn/g' package/feeds/Zero/luci-app-passwall2/luasrc/view/passwall2/app_update/*.htm
+sed -i 's/services/vpn/g' package/feeds/Zero/luci-app-passwall2/luasrc/view/passwall2/socks_auto_switch/*.htm
+sed -i 's/services/vpn/g' package/feeds/Zero/luci-app-passwall2/luasrc/view/passwall2/global/*.htm
+sed -i 's/services/vpn/g' package/feeds/Zero/luci-app-passwall2/luasrc/view/passwall2/haproxy/*.htm
+sed -i 's/services/vpn/g' package/feeds/Zero/luci-app-passwall2/luasrc/view/passwall2/log/*.htm
+sed -i 's/services/vpn/g' package/feeds/Zero/luci-app-passwall2/luasrc/view/passwall2/node_list/*.htm
+sed -i 's/services/vpn/g' package/feeds/Zero/luci-app-passwall2/luasrc/view/passwall2/rule/*.htm
+sed -i 's/services/vpn/g' package/feeds/Zero/luci-app-passwall2/luasrc/view/passwall2/server/*.htm
 
 sed -i 's/services/vpn/g' package/feeds/luci/luci-app-vssr/luasrc/controller/*.lua
 sed -i 's/services/vpn/g' package/feeds/luci/luci-app-vssr/luasrc/model/cbi/vssr/*.lua
@@ -102,9 +102,9 @@ sed -i 's/services/vpn/g' package/feeds/luci/luci-app-openclash/luasrc/*.lua
 sed -i 's/services/vpn/g' package/feeds/luci/luci-app-openclash/luasrc/model/cbi/openclash/*.lua
 sed -i 's/services/vpn/g' package/feeds/luci/luci-app-openclash/luasrc/view/openclash/*.htm
 
-sed -i 's/services/vpn/g' package/feeds/Zero-IPK/luci-app-bypass/luasrc/controller/*.lua
-sed -i 's/services/vpn/g' package/feeds/Zero-IPK/luci-app-bypass/luasrc/model/cbi/bypass/*.lua
-sed -i 's/services/vpn/g' package/feeds/Zero-IPK/luci-app-bypass/luasrc/view/bypass/*.htm
+sed -i 's/services/vpn/g' package/feeds/Zero/luci-app-bypass/luasrc/controller/*.lua
+sed -i 's/services/vpn/g' package/feeds/Zero/luci-app-bypass/luasrc/model/cbi/bypass/*.lua
+sed -i 's/services/vpn/g' package/feeds/Zero/luci-app-bypass/luasrc/view/bypass/*.htm
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
