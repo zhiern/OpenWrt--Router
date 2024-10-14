@@ -29,7 +29,7 @@ git clone --depth=1 https://github.com/oppen321/luci-app-eqos package/eqos
 # 个性化设置
 sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
 sed -i 's/OpenWrt/Qigoo 360T7/' package/base-files/files/bin/config_generate
-sed -i "s/o\.default = 'bing';/o.default = 'none';/" package/luci-app-argon-config/htdocs/luci-static/resources/view/argon-config.js
+sed -i 's/o\.default = 'bing';/o.default = 'none';/' package/luci-app-argon-config/htdocs/luci-static/resources/view/argon-config.js
 cp -f $GITHUB_WORKSPACE/images/bg1.jpg package/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 
 # 修改WiFi名称
