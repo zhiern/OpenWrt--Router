@@ -67,13 +67,6 @@ jobs:
             DIY_SCRIPT="Diy/Xiaomi-AX3600.sh"
             CACHE_TOOLCHAIN="true"
             ;;
-            "F-mt7981_ax3000t")
-            CONFIG_FILE="Configs/Xiaomi-AX3600"
-            FIRMWARE_TAG="IPQ807x"
-            CHIP="IPQ807x"
-            DIY_SCRIPT="Diy/Xiaomi-AX3600.sh"
-            CACHE_TOOLCHAIN="true"
-            ;;
           *)
             echo "Unknown device: $DEVICE"
             exit 1
