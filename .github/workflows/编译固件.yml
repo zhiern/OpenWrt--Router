@@ -58,14 +58,14 @@ jobs:
           "Redmi AX6000")
             CONFIG_FILE="Configs/Redmi-AX6000"
             FIRMWARE_TAG="MT798X"
-            CHIP="MT7981"
+            CHIP="MT7986"
             DIY_SCRIPT="Diy/Redmi-AX6000.sh"
             CACHE_TOOLCHAIN="true"
             ;;
-            "Xiaomi AX3600")
+            "CMCC RAX3000M")
             CONFIG_FILE="Configs/CMCC-RAX3000M"
-            FIRMWARE_TAG="IPQ807x"
-            CHIP="IPQ807x"
+            FIRMWARE_TAG="MT798X"
+            CHIP="MT7981"
             DIY_SCRIPT="Diy/CMCC-RAX3000M.sh"
             CACHE_TOOLCHAIN="true"
             ;;
