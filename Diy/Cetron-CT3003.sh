@@ -19,6 +19,8 @@ git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/l
 
 ##移除冲突文件
 rm -rf feeds/packages/net/{xray*,v2ray*,sing-box*,brook*,chinadns-ng,*dns2socks*,dns2tcp*shadowsocks-libev,*shadowsocks-rust,*simple-obfs,*tcping,*trojan-go.*trojan,*trojan-plus,*tuic-client,*hysteria}
+rm -rf feeds/packages/utils/v2dat
+rm -rf feeds/packages/lang/golang
 
 ##自定义页面
 echo -e "\nmsgid \"Control\"" >> feeds/luci/modules/luci-base/po/zh_Hans/base.po
@@ -65,28 +67,18 @@ sed -i "s/ImmortalWrt-5G/ZeroWrt-5G/g" package/mtk/applications/mtwifi-cfg/files
 
 ##更新FQ
 rm -rf feeds/luci/applications/luci-app-passwall/*
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
-
 rm -rf feeds/luci/applications/luci-app-ssr-plus/*
-git clone --depth=1 -b main https://github.com/fw876/helloworld package/luci-app-ssr-plus
-
 rm -rf feeds/luci/applications/luci-app-openclash/*
-git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
-
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2 package/luci-app-passwall2
-
-
-##MosDNS
-rm -rf feeds/packages/net/mosdns/*
-rm -rf feeds/packages/net/v2ray-geodata/*
-git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
-git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+git clone  --depth=1 https://github.com/kenzok8/small package/small
 
 # iStore
 git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
 git_sparse_clone main https://github.com/linkease/istore luci
 
+##Mosdns
+rm -rf feeds/packages/net/v2ray-geodata
+git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 ##定时设置
 git clone --depth=1 https://github.com/sirpdboy/luci-app-autotimeset package/luci-app-autotimeset
