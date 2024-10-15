@@ -42,7 +42,7 @@ sed -i "s/hostname='.*'/hostname='ZeroWrt'/g" package/base-files/files/bin/confi
 ##加入作者信息
 sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='ZeroWrt-$(date +%Y%m%d)'/g"  package/base-files/files/etc/openwrt_release
 sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By Zero'/g" package/base-files/files/etc/openwrt_release
-cp -af feeds/Zero/patch/diy/banner  package/base-files/files/etc/banner
+cp -af scripts/banner  package/base-files/files/etc/banner
 
 sed -i "2iuci set istore.istore.channel='ZeroWrt_zero'" package/emortal/default-settings/files/99-default-settings
 sed -i "3iuci commit istore" package/emortal/default-settings/files/99-default-settings
