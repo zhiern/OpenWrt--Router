@@ -67,7 +67,7 @@ sed -i "s/ImmortalWrt-5G/ZeroWrt-5G/g" package/mtk/applications/mtwifi-cfg/files
 rm -rf feeds/luci/applications/luci-app-passwall/*
 rm -rf feeds/luci/applications/luci-app-ssr-plus/*
 rm -rf feeds/luci/applications/luci-app-openclash/*
-git clone  --depth=1 https://github.com/kenzok8/small package/small
+git clone --depth=1 https://github.com/kenzok8/small package/small
 
 # iStore
 git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
