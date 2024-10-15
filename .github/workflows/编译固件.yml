@@ -14,7 +14,7 @@ on:
           - Cetron CT3003
           - Qigoo 360T7
           - Redmi AX6000
-          - Xiaomi AX3600
+          - CMCC RAX3000M
 
 env:
   REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
@@ -63,10 +63,10 @@ jobs:
             CACHE_TOOLCHAIN="true"
             ;;
             "Xiaomi AX3600")
-            CONFIG_FILE="Configs/Xiaomi-AX3600"
+            CONFIG_FILE="Configs/CMCC-RAX3000M"
             FIRMWARE_TAG="IPQ807x"
             CHIP="IPQ807x"
-            DIY_SCRIPT="Diy/Xiaomi-AX3600.sh"
+            DIY_SCRIPT="Diy/CMCC-RAX3000M.sh"
             CACHE_TOOLCHAIN="true"
             ;;
           *)
