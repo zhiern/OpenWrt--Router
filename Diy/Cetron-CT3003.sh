@@ -84,9 +84,6 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
 git_sparse_clone main https://github.com/linkease/istore luci
 
-##Adblock
-# rm -rf feeds/luci/applications/luci-app-adblock/*
-# cp -af feeds/Zero/luci-app-adblock/*  feeds/luci/applications/luci-app-adblock/
 
 ##FQ全部调到VPN菜单
 sed -i 's/services/vpn/g' package/luci-app-ssr-plus/luasrc/controller/*.lua
@@ -127,3 +124,7 @@ sed -i 's/services/vpn/g' package/luci-app-openclash/luasrc/controller/*.lua
 sed -i 's/services/vpn/g' package/luci-app-openclash/luasrc/*.lua
 sed -i 's/services/vpn/g' package/luci-app-openclash/luasrc/model/cbi/openclash/*.lua
 sed -i 's/services/vpn/g' package/luci-app-openclash/luasrc/view/openclash/*.htm
+
+
+./scripts/feeds update -a
+./scripts/feeds install -a
