@@ -19,8 +19,6 @@ git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/l
 
 ##移除冲突文件
 rm -rf feeds/packages/net/{xray*,v2ray*,sing-box*,brook*,chinadns-ng,*dns2socks*,dns2tcp*shadowsocks-libev,*shadowsocks-rust,*simple-obfs,*tcping,*trojan-go.*trojan,*trojan-plus,*tuic-client,*hysteria}
-rm -rf feeds/packages/utils/v2dat
-rm -rf feeds/packages/lang/golang
 
 ##自定义页面
 echo -e "\nmsgid \"Control\"" >> feeds/luci/modules/luci-base/po/zh_Hans/base.po
