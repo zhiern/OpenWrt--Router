@@ -30,7 +30,7 @@ echo -e "msgstr \"魔法网络\"" >> feeds/luci/modules/luci-base/po/zh_Hans/bas
 ##配置IP
 sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
 
-##
+
 ##取消bootstrap为默认主题
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
@@ -86,9 +86,9 @@ git_sparse_clone main https://github.com/linkease/istore luci
 
 
 ##FQ全部调到VPN菜单
-sed -i 's/services/vpn/g' package/luci-app-ssr-plus/luasrc/controller/*.lua
-sed -i 's/services/vpn/g' package/feeds/luci/luci-app-ssr-plus/luasrc/model/cbi/shadowsocksr/*.lua
-sed -i 's/services/vpn/g' package/feeds/luci/luci-app-ssr-plus/luasrc/view/shadowsocksr/*.htm
+sed -i 's/services/vpn/g' package/luci-app-ssr-plus/luci-app-ssr-plus/luasrc/controller/*.lua
+sed -i 's/services/vpn/g' package/luci-app-ssr-plus/luci-app-ssr-plus/luasrc/model/cbi/shadowsocksr/*.lua
+sed -i 's/services/vpn/g' package/luci-app-ssr-plus/luci-app-ssr-plus/luasrc/view/shadowsocksr/*.htm
 
 sed -i 's/services/vpn/g' package/luci-app-passwall/luci-app-passwall/luasrc/controller/*.lua
 sed -i 's/services/vpn/g' package/luci-app-passwall/luci-app-passwall/luasrc/passwall/*.lua
