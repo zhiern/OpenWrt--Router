@@ -114,10 +114,10 @@ sed -i 's/services/vpn/g' package/feeds/luci/luci-app-vssr/luasrc/controller/*.l
 sed -i 's/services/vpn/g' package/feeds/luci/luci-app-vssr/luasrc/model/cbi/vssr/*.lua
 sed -i 's/services/vpn/g' package/feeds/luci/luci-app-vssr/luasrc/view/vssr/*.htm
 
-sed -i 's/services/vpn/g' package/small/luci-app-openclash/luasrc/controller/*.lua
-sed -i 's/services/vpn/g' package/small/luci-app-openclash/luasrc/*.lua
-sed -i 's/services/vpn/g' package/small/luci-app-openclash/luasrc/model/cbi/openclash/*.lua
-sed -i 's/services/vpn/g' package/small/luci-app-openclash/luasrc/view/openclash/*.htm
+sed -i 's/services/vpn/g' package/luci-app-openclash/luasrc/controller/*.lua
+sed -i 's/services/vpn/g' package/luci-app-openclash/luasrc/*.lua
+sed -i 's/services/vpn/g' package/luci-app-openclash/luasrc/model/cbi/openclash/*.lua
+sed -i 's/services/vpn/g' package/luci-app-openclash/luasrc/view/openclash/*.htm
 
 
 ./scripts/feeds update -a
