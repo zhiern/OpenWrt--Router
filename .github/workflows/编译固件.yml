@@ -1,90 +1,30 @@
-name: 编译固件
+name: MT7981
 
 on:
   workflow_dispatch:
-#  schedule:
-#    - cron: 0 18 * * *
-    inputs:
-      device:
-        description: '选择需要编译的设备'
-        required: true
-        type: choice
-        options:
-          - Xiaomi AX3000T
-          - Cetron CT3003
-          - Qigoo 360T7
-          - Redmi AX6000
-          - CMCC RAX3000M
+# schedule:
+#    - cron: 0 20 * * *
 
 env:
   REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
+  CONFIG_FILE: configs/MT7981
+  DIY_SCRIPT: diy-script.sh
+  CLASH_KERNEL: arm64
+  CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   FIRMWARE_RELEASE: true
+  FIRMWARE_TAG: MT7981
   TZ: Asia/Shanghai
 
 jobs:
   Build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
-    - name: 根据设备选择配置
-      run: |
-        DEVICE="${{ github.event.inputs.device }}"
-        case "$DEVICE" in
-          "Xiaomi AX3000T")
-            CONFIG_FILE="Configs/Xiaomi-AX3000T"
-            FIRMWARE_TAG="MT7981"
-            CHIP="MT7981"
-            DIY_SCRIPT="Diy/Xiaomi-AX3000T.sh"
-            CACHE_TOOLCHAIN="true"  # ARM 架构缓存工具链
-            ;;
-          "Cetron CT3003")
-            CONFIG_FILE="Configs/Cetron-CT3003"
-            FIRMWARE_TAG="MT7981"
-            CHIP="MT7981"
-            DIY_SCRIPT="Diy/Cetron-CT3003.sh"
-            CACHE_TOOLCHAIN="true"
-            ;;
-          "Qigoo 360T7")
-            CONFIG_FILE="Configs/Qigoo-360T7"
-            FIRMWARE_TAG="MT7981"
-            CHIP="MT7981"
-            DIY_SCRIPT="Diy/Qigoo-360T7.sh"
-            CACHE_TOOLCHAIN="true"
-            ;;
-          "Redmi AX6000")
-            CONFIG_FILE="Configs/Redmi-AX6000"
-            FIRMWARE_TAG="MT7986"
-            CHIP="MT7986"
-            DIY_SCRIPT="Diy/Redmi-AX6000.sh"
-            CACHE_TOOLCHAIN="true"
-            ;;
-            "CMCC RAX3000M")
-            CONFIG_FILE="Configs/CMCC-RAX3000M"
-            FIRMWARE_TAG="MT7981"
-            CHIP="MT7981"
-            DIY_SCRIPT="Diy/CMCC-RAX3000M.sh"
-            CACHE_TOOLCHAIN="true"
-            ;;
-          *)
-            echo "Unknown device: $DEVICE"
-            exit 1
-            ;;
-        esac
-        echo "CONFIG_FILE=$CONFIG_FILE" >> $GITHUB_ENV
-        echo "FIRMWARE_TAG=$FIRMWARE_TAG" >> $GITHUB_ENV
-        echo "CHIP=$CHIP" >> $GITHUB_ENV
-        echo "CACHE_TOOLCHAIN=$CACHE_TOOLCHAIN" >> $GITHUB_ENV
-        echo "DIY_SCRIPT=$DIY_SCRIPT" >> $GITHUB_ENV
-        
-    - name: 检查服务器性能与设备信息
+    - name: Check Server Performance
       run: |
         echo "警告⚠"
-        echo "编译设备: ${{ github.event.inputs.device }}"
-        echo "芯片组: $CHIP"
-        echo "固件标签: $FIRMWARE_TAG"
-        echo "脚本选择: $DIY_SCRIPT"  # 添加引号
         echo "分配的服务器性能有限，若选择的插件过多，务必注意CPU性能！"
         echo -e "已知CPU型号(降序): 7763，8370C，8272CL，8171M，E5-2673\n"
         echo "--------------------------CPU信息--------------------------"
@@ -97,7 +37,7 @@ jobs:
         echo "--------------------------硬盘信息--------------------------"
         echo "硬盘数量: $(ls /dev/sd* | grep -v [1-9] | wc -l)" && df -hT
 
-    - name: 初始化环境
+    - name: Initialization Environment
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
@@ -112,17 +52,17 @@ jobs:
         sudo -E apt-get -y install clang
         sudo timedatectl set-timezone "$TZ"
 
-    - name: 合并磁盘
+    - name: Combine Disks
       uses: easimon/maximize-build-space@master
       with:
         swap-size-mb: 1024
         temp-reserve-mb: 100
         root-reserve-mb: 1024
 
-    - name: 查看分区
+    - name: Checkout
       uses: actions/checkout@main
 
-    - name: 克隆源代码
+    - name: Clone Source Code
       run: |
         df -hT $GITHUB_WORKSPACE
         git clone $REPO_URL -b $REPO_BRANCH openwrt
@@ -137,7 +77,7 @@ jobs:
         COMMIT_HASH=$(git show -s --date=short --format="hash: %H")
         echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
 
-    - name: 生成变量
+    - name: Generate Variables
       run: |
         cp $CONFIG_FILE $OPENWRT_PATH/.config
         cd $OPENWRT_PATH
@@ -149,7 +89,7 @@ jobs:
         DEVICE_SUBTARGET=$(cat .config | grep CONFIG_TARGET_SUBTARGET | awk -F '"' '{print $2}')
         echo "DEVICE_SUBTARGET=$DEVICE_SUBTARGET" >> $GITHUB_ENV
 
-    - name: 缓存工具链
+    - name: Cache Toolchain
       if: env.CACHE_TOOLCHAIN == 'true'
       uses: HiGarfield/cachewrtbuild@main
       with:
@@ -157,23 +97,24 @@ jobs:
         mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}
         prefix: ${{ env.OPENWRT_PATH }}
 
-    - name: 安装源
+    - name: Install Feeds
       run: |
         cd $OPENWRT_PATH
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
-    - name: 加载自定义配置
+    - name: Load Custom Configuration
       run: |
         [ -e files ] && mv files $OPENWRT_PATH/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
-        cat $EXTRA_CONFIG >> $OPENWRT_PATH/.config
-        chmod +x $GITHUB_WORKSPACE/scripts/*.sh
         chmod +x $DIY_SCRIPT
+        chmod +x $GITHUB_WORKSPACE/scripts/*.sh
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
+        $GITHUB_WORKSPACE/scripts/preset-clash-core.sh $CLASH_KERNEL
+        $GITHUB_WORKSPACE/scripts/preset-terminal-tools.sh
 
-    - name: 下载DL包
+    - name: Download DL Package
       run: |
         cd $OPENWRT_PATH
         make defconfig
@@ -181,30 +122,28 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: 编译固件
+    - name: Compile Firmware
       id: compile
       run: |
         cd $OPENWRT_PATH
-        mkdir -p files/etc/uci-defaults
-        cp $GITHUB_WORKSPACE/scripts/init-settings.sh files/etc/uci-defaults/99-init-settings
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "status=success" >> $GITHUB_OUTPUT
         echo "DATE=$(date +"%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
         echo "FILE_DATE=$(date +"%Y.%m.%d")" >> $GITHUB_ENV
-        
-    - name: 检查空间使用情况
+
+    - name: Check Space Usage
       if: (!cancelled())
       run: df -hT
 
-    - name: 上传Bin目录
+    - name: Upload Bin Directory
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       uses: actions/upload-artifact@main
       with:
         name: ${{ env.SOURCE_REPO }}-bin-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.FILE_DATE }}
         path: ${{ env.OPENWRT_PATH }}/bin
 
-    - name: 整理文件
+    - name: Organize Files
       if: steps.compile.outputs.status == 'success'
       run: |
         cd $OPENWRT_PATH/bin/targets/*/*
@@ -216,14 +155,14 @@ jobs:
         echo "KERNEL=$(cat *.manifest | grep ^kernel | cut -d- -f2 | tr -d ' ')" >> $GITHUB_ENV
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
-    - name: 上传固件到Artifact
+    - name: Upload Firmware To Artifact
       if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE != 'true'
       uses: actions/upload-artifact@main
       with:
         name: ${{ env.SOURCE_REPO }}-firmware-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE_PATH }}
 
-    - name: 上传固件发布
+    - name: Upload Firmware To Release
       if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE == 'true'
       uses: ncipollo/release-action@v1
       with:
@@ -235,15 +174,15 @@ jobs:
         body: |
           **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}**
           ### 📒 固件信息
-          - 💻 平台架构: ${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }} (芯片组: ${{ env.CHIP }})
+          - 💻 平台架构: ${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }} (rk33xx, rk35xx)
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🚀 内核版本: ${{ env.KERNEL }}
-          - 🌐 默认地址: 10.0.0.1
+          - 🌐 默认地址: 192.168.100.1
           - 🔑 默认密码: password
           ### 🧊 固件版本
           - 固件编译前最后一次➦[主源码](${{ env.REPO_URL }})更新记录
-          - **作者**: ${{ env.COMMIT_AUTHOR }}
-          - **编译时间**: ${{ env.COMMIT_DATE }}
-          - **提交信息**: ${{ env.COMMIT_MESSAGE }}
-          - **提交哈希**: ${{ env.COMMIT_HASH }}
+          - ${{ env.COMMIT_AUTHOR }}
+          - ${{ env.COMMIT_DATE }}
+          - ${{ env.COMMIT_MESSAGE }}
+          - ${{ env.COMMIT_HASH }}
