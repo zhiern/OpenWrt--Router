@@ -73,5 +73,3 @@ git clone --depth=1 https://github.com/sirpdboy/luci-app-autotimeset package/luc
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
-./scripts/feeds update -a
-./scripts/feeds install -a
