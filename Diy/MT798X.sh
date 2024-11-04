@@ -46,7 +46,7 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci-n
 
 ##Argon主题设置
 cp -f $GITHUB_WORKSPACE/images/bg1.jpg feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
-
+sed -i "s/^\\(\\s*option online_wallpaper\\s*\\).*$/\\1'none'/" feeds/luci/applications/luci-app-argon-config/root/etc/config/argon
 
 ##更改主机名
 sed -i "s/hostname='.*'/hostname='ZeroWrt'/g" package/base-files/files/bin/config_generate
